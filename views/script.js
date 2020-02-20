@@ -1,12 +1,31 @@
 var ctx = document.getElementById('myChart');
 
+var labels = [];
+var data = [];
+
+axios.get('/weather', {
+    params: {
+      user: 'application'
+    }
+  })
+  .then(function (response) {
+    console.log(response)
+    response.data.temperature.forEach(element => {
+        labels.push(element.Date);
+        data.push(element.Temp);
+    });
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+  .then(function () {
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ['2020-02-20 8:00:00', '2020-02-20 9:00:00', '2020-02-20 10:00:00', '2020-02-20 11:00:00', '2020-02-20 12:00:00', '2020-02-20 13:00:00'],
+        labels: labels,
         datasets: [{
             label: 'teplota °C',
-            data: [6.9, 6.9, 7.3, 8.5, 9, 11.2],
+            data: data,
             backgroundColor: [
                 'rgba(75, 192, 192, 0.2)',
             ],
@@ -25,4 +44,6 @@ var myChart = new Chart(ctx, {
             }]
         }
     }
+})
+
 });
