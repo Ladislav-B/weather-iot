@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+html
+  head
+    meta(charset = "UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title= title
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.min.css")
+  body
+    div(class='container')
+        section(class='hero')
+            div(class="hero-body")
+                h1(class='title has-text-primary')= message
+                p(class='subtitle') Graf teploty a tlaku za posledních deset dní
+        section(class='section')
+            div(class='app')
+                canvas(id="myChart" width="640" height="400")
+        section(class='section')
+            div(class='footer')
+                <div class="content has-text-centered">
+                    p(class='is-size-7') Vytvořeno pomocí Express, SQLite, Pug, Bulma a úžasné knihovny Chart.js
+                    p(class='is-size-7') únor 2020
+    script
+      include script.js
+    
